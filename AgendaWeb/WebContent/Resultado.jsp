@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <% 
-	String email= request.getParameter("emailXXX");
+	String email= request.getParameter("txt-email");
 	String senha = request.getParameter("senha");
-	String nome = request.getParameter("XPTO");
+	String nome = request.getParameter("txt-nome");
 	
-	int respsta = Integer.parseInt(email) + Integer.parseInt(senha);
 %>
        
 <!DOCTYPE html>
@@ -16,9 +15,7 @@
 </head>
 <body>
 	<%= email   %><br><br>
-	<%= senha   %><br><br>
-	<%= respsta %><br><br>
 	<%= nome %><br><br>
-	 <h1>Eu sou um html! È verdade esse bilhete</h1>
+	 <h1>Eu sou um html! È verdade esse bilete</h1>
 </body>
 </html>
