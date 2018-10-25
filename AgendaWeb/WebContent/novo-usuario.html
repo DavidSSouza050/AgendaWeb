@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="ISO-8859-1">
 		<title>Criar novo usuario</title>
 		<link rel="stylesheet"	type="text/css" href="./css/bootstrap.css">
+		<meta charset="UTF-8">
 	</head>
 	<body class="bg-dark">
 		<div class="bg-info text-white">
@@ -13,7 +13,7 @@
 						<img src="./imagens/agenda64.png">
 					</div>
 					<div class="col-md-11">
-						<h1>Agenda Eletrôrnica</h1>
+						<h1>Agenda EletrÃ´rnica</h1>
 						<h6>Contatos e Compromissos</h6>
 					</div>
 				</div>
@@ -31,16 +31,19 @@
 						</div>
 					</div>
 				</div>
-				<form id="usuario" action="Resultado.jsp" method="post">
+				<form id="usuario" action="usuarioServlet" method="get">
 					<div class="card-body">
+						<div class="alert-warning">
+							<ul id="mensagens-erro" class="mt-2 mb-3">
+								
+							</ul>	
+						</div>
 						<div class="row">
 							<div class="col-md-12 text-primary">
 								<h6 class="text-primary mb-4">Dados pessoais</h6>
 							</div>
 						</div>
-						<div id="erros">
-								
-						</div>
+						
 						<div class="row form-group">
 							
 							<div class="col-md-5">

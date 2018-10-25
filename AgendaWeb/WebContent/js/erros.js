@@ -13,8 +13,8 @@ function validaUsuario(usuario){
         erros.push("O e-mail e obrigatório.");
     }
 
-    if(usuario.sexo.length === "Selecione"){
-        erros.push("O sexo e obrigaório.");
+    if(usuario.sexo === "Selecione"){
+        erros.push("O sexo é obrigaório.");
     }
 
     if(usuario.senha.length < 8){

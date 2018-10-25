@@ -14,16 +14,20 @@ btn.addEventListener("click", function(){
     };
 
     var erros = validaUsuario(usuario);
-    var ul = document.querySelector("#erros");
-
-    if(erros.length > 0){
-        var ul = ""; 
-        event.preventDefault();
-        for(let i=0; i < erros.length; i++){
-           var li = document.createElement("li");
-        };
-        li.textContent = erros[i];
-        ul.appendChild(li);
-    };
+    var ul = document.querySelector("#mensagens-erro");
+    ul.textContent = "";
+    
+     if(erros.length > 0){ 
+         event.preventDefault();
+         ul.classList.add("pt-2");
+         ul.classList.add("pb-2");
+         for(let i=0; i < erros.length; i++){
+             var li = document.createElement("li");
+             li.style.color = "red";
+             li.textContent = erros[i];	
+             ul.appendChild(li);
+          };
+        
+     };
 
 });
