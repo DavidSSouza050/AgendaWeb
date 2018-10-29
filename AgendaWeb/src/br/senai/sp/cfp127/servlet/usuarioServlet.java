@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.senai.sp.cfp127.dao.Usuariodao;
+import br.senai.sp.cfp127.model.Usuario;
+
 @WebServlet("/usuarioServlet")
 public class usuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -16,17 +19,17 @@ public class usuarioServlet extends HttpServlet {
 
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getParameter("txt-nome"));
-		System.out.println(request.getParameter("txt-email"));
-		System.out.println(request.getParameter("txt-nascimento"));
-		System.out.println(request.getParameter("txt-sexo"));
-		System.out.println(request.getParameter("senha"));
-		System.out.println(request.getParameter("conf-senha"));
-	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		Usuario u = new Usuario();
+		u.setNome(request.getParameter("txt-nome"));
+		u.setEmail(request.getParameter("txt-email"));
+		u.setDtNascimento(request.getParameter("txt-nascimento"));
+		u.setSenha(request.getParameter("senha"));
+		u.setSexo(request.getParameter("txt-sexo"));
+	
+		Usuariodao dao = new Usuariodao();
+		dao.setUsuario(u);
+		dao.gravar();
 		
 //		String nome = request.getParameter("txt-nome");
 	}

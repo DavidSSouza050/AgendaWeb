@@ -1,7 +1,6 @@
 var btn = document.querySelector("#bt-Criar");
 
 btn.addEventListener("click", function(){
-   
     
     var formulario = document.querySelector("#usuario");
     var usuario = {
@@ -15,7 +14,7 @@ btn.addEventListener("click", function(){
 
     var erros = validaUsuario(usuario);
     var ul = document.querySelector("#mensagens-erro");
-    ul.textContent = "";
+    ul.textConten = "";
     
      if(erros.length > 0){ 
          event.preventDefault();
