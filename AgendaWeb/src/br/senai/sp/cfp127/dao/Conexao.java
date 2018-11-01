@@ -10,7 +10,7 @@ public class Conexao {
 	public static Connection getConexao(){
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			String dbURL ="jdbc:mysql://10.107.134.23:3306/db_inf2ta?useTimezone=true&serverTimezone=UTC";
 			String user = "inf2ta";
 			String pass = "123";

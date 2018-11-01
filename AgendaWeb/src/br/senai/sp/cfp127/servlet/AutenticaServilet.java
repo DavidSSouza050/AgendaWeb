@@ -10,32 +10,31 @@ import javax.servlet.http.HttpServletResponse;
 import br.senai.sp.cfp127.dao.Usuariodao;
 import br.senai.sp.cfp127.model.Usuario;
 
-@WebServlet("/usuarioServlet")
-public class usuarioServlet extends HttpServlet {
+
+@WebServlet("/AutenticaServilet")
+public class AutenticaServilet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public usuarioServlet() {
+    
+    public AutenticaServilet() {
         super();
-
+        
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Usuario u = new Usuario();
-		u.setNome(request.getParameter("txt-nome"));
-		u.setEmail(request.getParameter("txt-email"));
-		u.setDtNascimento(request.getParameter("txt-nascimento"));
-        u.setSenha(request.getParameter("senha"));
-		u.setSexo(request.getParameter("txt-sexo"));
-		
 		Usuariodao dao = new Usuariodao();
-		dao.setUsuario(u);
-		if(dao.gravar()){
-			response.sendRedirect("sucesso.html");
-		}else {
-			response.sendRedirect("novo-usuario.html");
-		}
+		Usuario usuario = new Usuario();
 		
-//		String nome = request.getParameter("txt-nome");
+		
+		usuario = dao.autenticar(request.getParameter("email"),request.getParameter("senha"));
+		
+		if(usuario.getCod() != 0) {
+			System.out.println("Logado com sucesso");
+			response.sendRedirect("Resultado.jsp");
+		}else {
+			System.out.println("senha ou email incorreto");
+			response.sendRedirect("Login.html");
+		}
 	}
 
 }
