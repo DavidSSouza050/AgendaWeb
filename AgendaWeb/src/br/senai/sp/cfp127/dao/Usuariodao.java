@@ -42,7 +42,7 @@ public class Usuariodao {
 		
 	}
 	
-	//Autenticar
+	//Autenticar o usuario no banco
 	public Usuario autenticar(String email, String senha) {
 		this.usuario = new Usuario();
 		
