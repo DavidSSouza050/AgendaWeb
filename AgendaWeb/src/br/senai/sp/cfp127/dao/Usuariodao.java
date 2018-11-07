@@ -42,6 +42,37 @@ public class Usuariodao {
 		
 	}
 	
+	// Atualizar usuario no banco
+	public boolean Atualizar() {
+		String sql = "UPDATE tbl_usuario SET "
+				+ "nome = ?,"
+				+ "email = ?,"
+				+ "senha = ?, "
+				+ "sexo = ?, "
+				+ "dtNascimento = ?"
+				+ "WHERE cod = ?";
+		try {
+			stm = Conexao.getConexao().prepareStatement(sql);
+			stm.setString(1, usuario.getNome());
+			stm.setString(2, usuario.getEmail());
+			stm.setString(3, usuario.getSenha());
+			stm.setString(4, usuario.getSexo().substring(0, 1));
+			stm.setString(5, usuario.getDtNascimento());
+			stm.setInt(6, usuario.getCod());
+			stm.execute();	
+			return true;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
 	//Autenticar o usuario no banco
 	public Usuario autenticar(String email, String senha) {
 		this.usuario = new Usuario();
@@ -66,5 +97,8 @@ public class Usuariodao {
 		}
 		return this.usuario;
 	}
+	
+	
+	
 	
 }

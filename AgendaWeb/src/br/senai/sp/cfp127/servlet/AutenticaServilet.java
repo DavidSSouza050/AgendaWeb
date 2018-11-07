@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.senai.sp.cfp127.dao.Usuariodao;
 import br.senai.sp.cfp127.model.Usuario;
@@ -24,15 +25,16 @@ public class AutenticaServilet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Usuariodao dao = new Usuariodao();
 		Usuario usuario = new Usuario();
-		
-		
+				
 		usuario = dao.autenticar(request.getParameter("email"),request.getParameter("senha"));
 		
+		HttpSession sessao = request.getSession();
+		//Atribuindo a sessão para o objeto usuario
+		sessao.setAttribute("usuario", usuario);
+		
 		if(usuario.getCod() != 0) {
-			System.out.println("Logado com sucesso");
-			response.sendRedirect("Resultado.jsp");
+			response.sendRedirect("index.jsp");
 		}else {
-			System.out.println("senha ou email incorreto");
 			response.sendRedirect("Login.html");
 		}
 	}

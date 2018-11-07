@@ -26,16 +26,27 @@ public class usuarioServlet extends HttpServlet {
 		u.setDtNascimento(request.getParameter("txt-nascimento"));
         u.setSenha(request.getParameter("senha"));
 		u.setSexo(request.getParameter("txt-sexo"));
+	
+		if(request.getParameter("txt-cod").length() > 0) {
+			u.setCod(Integer.parseInt(request.getParameter("txt-cod")));
+		}
 		
 		Usuariodao dao = new Usuariodao();
 		dao.setUsuario(u);
-		if(dao.gravar()){
-			response.sendRedirect("sucesso.html");
-		}else {
-			response.sendRedirect("novo-usuario.html");
+		
+		if(u.getCod() == 0) {
+			if(dao.gravar()){
+				response.sendRedirect("sucesso.html");
+			}else {
+				response.sendRedirect("novo-usuario.html");
+			}
+		}else if(dao.Atualizar()){
+			response.sendRedirect("index.jsp");
 		}
 		
-//		String nome = request.getParameter("txt-nome");
+		
+		
+
 	}
 
 }
