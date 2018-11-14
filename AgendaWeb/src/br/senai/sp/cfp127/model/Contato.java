@@ -7,7 +7,7 @@ public class Contato {
 		private Usuario usuario;
 		private String nome;
 		private String email;
-		private String endeco;
+		private String endereco;
 		private String telefone;
 
 		
@@ -49,12 +49,12 @@ public class Contato {
 	}
 
 	//endeço do contato
-	public String getEndeco() {
-		return endeco;
+	public String getEndereco() {
+		return endereco;
 	}
 
-	public void setEndeco(String endeco) {
-		this.endeco = endeco;
+	public void setEndereco(String endeco) {
+		this.endereco = endeco;
 	}
 
 	//telefone do contato

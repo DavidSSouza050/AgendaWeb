@@ -23,7 +23,7 @@
 			<!DOCTYPE html>
 			<html>
 				<head>
-					<title>Criar novo usuario</title>
+					<title>Meus contatos</title>
 					<link rel="stylesheet"	type="text/css" href="./css/bootstrap.css">
 					<meta charset="UTF-8">
 				</head>
@@ -53,16 +53,24 @@
 							<div  class="col-md-8">
 								<div class="card">
 									<div class="card-header bg-info text-white">
-										<h5>Bem-vindo</h5>
+										<div class="row">
+											<div class="col-md-10">
+												<h5>Meus Contatos</h5>
+											</div>
+											<div class="col-md-2">
+												<a href="NovoContato.jsp" class="badge badge-success">Novo contato</a>
+											</div>
+										</div>
 									</div>
 									
 									<div class="card-body">
 										<table class="table table-hover">
-											<thead>
+											<thead class="thead-dark">
 												<tr>
 													<th scope="col">Cod.</th>
 													<th scope="col">Nome</th>
 													<th scope="col">Email</th>
+													<th></th>
 												</tr>
 											</thead>
 											<tbody>
@@ -72,8 +80,13 @@
 												
 												<tr>
 													<td><%= c.getCodContato() %></td>
-													<td><%= c.getNome() %></td>
+													<td><a href="ExibirContatoServilet&cod_contato<%= c.getCodContato()%>"><%= c.getNome() %></a></td>
 													<td><%= c.getEmail() %></td>
+													<td>
+														<a href="ExcluirContatoServilet&cod_contato<%= c.getCodContato()%>">
+															<img src="./imagens/deleteX32.png">
+														</a>
+													</td>
 												</tr>
 													
 												<% } %>
