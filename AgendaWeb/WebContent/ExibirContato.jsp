@@ -11,7 +11,7 @@
 	
 	Contato contato = new Contato();	
 	contato = (Contato) session.getAttribute("contato");
-	
+	session.removeAttribute("contato");
 %>
 			<!DOCTYPE html>
 			<html>
@@ -56,7 +56,7 @@
 											<div class="card-header">
 													<h5> Cadastrar um novo usuario</h5>
 											</div>
-											<form id="contato" action="CadastrarContatoServlet" method="post">
+											<form id="contato" action="ExibirContatoServlet" method="post">
 												<div class="card-body">
 													<div class="alert-warning">
 														<ul id="mensagens-erro" class="mt-2 mb-3">
@@ -73,22 +73,22 @@
 														
 														<div class="col-md-4">
 															<label for="txt-nome">Nome:</label>
-															<input class="form-control" type="text" name="txt-nome" id="txt-nome" >
+															<input class="form-control" type="text" name="txt-nome" value="<%= contato.getNome() %>" id="txt-nome" >
 														</div>
 														<div class="col-md-4">
 															<label for="txt-Telefone">Telefone:</label>
-															<input class="form-control" type="text" name="txt-telefone" id="txt-telefone">
+															<input class="form-control" type="text" name="txt-telefone" value="<%= contato.getTelefone() %>" id="txt-telefone">
 														</div>
 														<div class="col-md-4">
 															<label for="txt-email">E-mail:</label>
-															<input class="form-control" type="text" name="txt-email" id="txt-email" >														
+															<input class="form-control" type="text" name="txt-email" value="<%= contato.getEmail() %>"  id="txt-email" >														
 														</div>
 													</div>												
 													<div class="row form-group">
 
 														<div class="col-md-12">
 															<label for="txt-endereco">Endereço:</label>
-															<input class="form-control" type="text" name="txt-endereco" id="txt-endereco" >														
+															<input class="form-control" type="text" name="txt-endereco" value="<%= contato.getEndereco()%>" id="txt-endereco" >														
 														</div>
 													</div>
 												</div>

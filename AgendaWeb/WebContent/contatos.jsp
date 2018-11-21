@@ -80,10 +80,10 @@
 												
 												<tr>
 													<td><%= c.getCodContato() %></td>
-													<td><a href="ExibirContatoServilet&cod_contato<%= c.getCodContato()%>"><%= c.getNome() %></a></td>
+													<td><a href="ExibirContatoServlet?cod_contato=<%= c.getCodContato()%>"><%= c.getNome() %></a></td>
 													<td><%= c.getEmail() %></td>
 													<td>
-														<a href="ExcluirContatoServilet&cod_contato<%= c.getCodContato()%>">
+														<a href="ExcluirContatoServlet?cod_contato=<%= c.getCodContato()%>">
 															<img src="./imagens/deleteX32.png">
 														</a>
 													</td>

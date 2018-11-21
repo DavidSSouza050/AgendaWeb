@@ -42,6 +42,7 @@ public class ContatoDao {
 		// Cadastrar contato
 		
 		public boolean gravar(Contato contato) {
+			System.out.println(">>>>>>>>>>>>>>>" + contato.getUsuario().getCod());
 			String sql = "INSERT INTO tbl_contato ("
 					+ "cod_usuario, nome, telefone, email, endereco)"
 					+ "VALUES (?, ?, ?, ?, ?)";
@@ -60,5 +61,33 @@ public class ContatoDao {
 			}
 			
 		}
+		
+		//Atualizar
+		public Contato getContato(int codContato){
+			
+			String sql = "SELECT * FROM tbl_contato "
+					+ "WHERE cod_contato = ?";
+			try {
+				stm = Conexao.getConexao().prepareStatement(sql);
+				stm.setInt(1, codContato);
+				rs = stm.executeQuery();
+				
+				if(rs.next()) {
+					this.contato = new Contato();
+					this.contato.setCodContato(rs.getInt("cod_contato"));
+					this.contato.setNome(rs.getString("nome"));
+					this.contato.setTelefone(rs.getString("telefone"));
+					this.contato.setEmail(rs.getString("email"));
+					this.contato.setEndereco(rs.getString("endereco"));
+					
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return contato;
+		}
+		
 		
 }

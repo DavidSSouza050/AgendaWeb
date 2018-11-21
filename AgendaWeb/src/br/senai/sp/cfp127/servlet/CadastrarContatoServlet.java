@@ -27,18 +27,18 @@ public class CadastrarContatoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Usuario u = new Usuario();
 		
-		u = (Usuario) request.getSession().getAttribute("u");
+		u = (Usuario) request.getSession().getAttribute("usuario");
 		
 		
-		Contato contato = new Contato(); 
+		Contato contato = new Contato();
+		contato.setUsuario(u);
 		contato.setNome(request.getParameter("txt-nome"));
 		contato.setEmail(request.getParameter("txt-email"));
 		contato.setEndereco(request.getParameter("txt-endereco"));
 		contato.setTelefone(request.getParameter("txt-telefone"));
-		contato.setUsuario(u);
+		
 		
 		ContatoDao dao = new ContatoDao();
-		dao.gravar(contato);
 		
 		if(dao.gravar(contato)) {
 			response.sendRedirect("contatos.jsp");
