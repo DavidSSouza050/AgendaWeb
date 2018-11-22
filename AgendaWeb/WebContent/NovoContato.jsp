@@ -72,6 +72,7 @@
 													<div class="row form-group">
 														
 														<div class="col-md-4">
+														<input type="text" name="txt-codContato" id="txt-codContato" hidden="hidden">
 															<label for="txt-nome">Nome:</label>
 															<input class="form-control" type="text" name="txt-nome" id="txt-nome" >
 														</div>

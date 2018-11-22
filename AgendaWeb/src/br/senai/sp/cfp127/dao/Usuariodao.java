@@ -42,6 +42,7 @@ public class Usuariodao {
 		
 	}
 	
+	
 	// Atualizar usuario no banco
 	public boolean Atualizar() {
 		String sql = "UPDATE tbl_usuario SET "

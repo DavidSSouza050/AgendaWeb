@@ -11,6 +11,18 @@ public class ContatoDao {
 		private PreparedStatement stm;
 		private ResultSet rs;
 		
+		
+		
+		public Contato getContato() {
+			return contato;
+		}
+
+
+		public void setContato(Contato contato) {
+			this.contato = contato;
+		}
+
+
 		public ArrayList<Contato> getContatos(int codUsuario){
 			ArrayList<Contato> contatos = new ArrayList<>();
 			
@@ -62,7 +74,7 @@ public class ContatoDao {
 			
 		}
 		
-		//Atualizar
+		//Selecionar Contato
 		public Contato getContato(int codContato){
 			
 			String sql = "SELECT * FROM tbl_contato "
@@ -88,6 +100,52 @@ public class ContatoDao {
 			
 			return contato;
 		}
+		
+		
+		//Atualizar contato
+		
+		public boolean atualizar(Contato contato) {
+			String sql = "UPDATE tbl_contato SET "
+					+ "nome = ?,"
+					+ "telefone = ?,"
+					+ "email = ?, "
+					+ "endereco = ? "
+					+ "WHERE cod_contato = ?";
+			try {
+				stm = Conexao.getConexao().prepareStatement(sql);
+				stm.setString(1, contato.getNome());
+				stm.setString(2, contato.getTelefone());
+				stm.setString(3, contato.getEmail());
+				stm.setString(4, contato.getEndereco());
+				stm.setInt(5, contato.getCodContato());
+				stm.execute();	
+				return true;
+			}catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+			
+		}
+		
+		
+		
+		// Excluir contato
+		
+		public boolean excluir(int codContato) {
+			String sql = "DELETE FROM tbl_contato WHERE cod_contato = ?";
+			
+			try {
+				stm = Conexao.getConexao().prepareStatement(sql);
+				stm.setInt(1, codContato);
+				stm.execute();
+				return true;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+			
+		}
+		
 		
 		
 }

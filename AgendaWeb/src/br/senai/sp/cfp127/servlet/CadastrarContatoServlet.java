@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.senai.sp.cfp127.dao.ContatoDao;
 import br.senai.sp.cfp127.model.Contato;
@@ -36,14 +37,23 @@ public class CadastrarContatoServlet extends HttpServlet {
 		contato.setEmail(request.getParameter("txt-email"));
 		contato.setEndereco(request.getParameter("txt-endereco"));
 		contato.setTelefone(request.getParameter("txt-telefone"));
-		
+		if(request.getParameter("txt-codContato").length() > 0) {
+			contato.setCodContato(Integer.parseInt(request.getParameter("txt-codContato")));
+		}
 		
 		ContatoDao dao = new ContatoDao();
+		dao.setContato(contato);
 		
-		if(dao.gravar(contato)) {
+		if(contato.getCodContato() == 0) {	
+			if(dao.gravar(contato)) {
+				response.sendRedirect("contatos.jsp");
+			}else {
+				response.sendRedirect("NovoContato.jsp");
+			}
+		}else if(dao.atualizar(contato)) {
+			HttpSession sessao = request.getSession();
+			sessao.setAttribute("contato", contato);
 			response.sendRedirect("contatos.jsp");
-		}else {
-			response.sendRedirect("NovoContato.jsp");
 		}
 		
 	}
