@@ -2,22 +2,41 @@ package br.senai.sp.cfp127.model;
 
 public class Compromisso {
 	
-	private int codComprimisso;
+	private int codCompromisso;
 	private Usuario usuario;
 	private String titulo;
+	private String data;
 	private String horaInicio;
 	private String horaFim;
 	private String descricao;
 	private int prioridade;
+	private int status;
 
-	
-	//Código Compromisso
-	public int getCodComprimisso() {
-		return codComprimisso;
+	//Data
+	public String getData() {
+		return data;
 	}
 
-	public void setCodComprimisso(int codComprimisso) {
-		this.codComprimisso = codComprimisso;
+	public void setData(String data) {
+		this.data = data;
+	}
+
+	//concluido
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	//Código Compromisso
+	public int getCodCompromisso() {
+		return codCompromisso;
+	}
+
+	public void setCodCompromisso(int codCompromisso) {
+		this.codCompromisso = codCompromisso;
 	}
 
 	//Usuario

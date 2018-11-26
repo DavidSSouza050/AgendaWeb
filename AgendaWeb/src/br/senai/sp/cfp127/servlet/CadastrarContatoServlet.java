@@ -37,6 +37,7 @@ public class CadastrarContatoServlet extends HttpServlet {
 		contato.setEmail(request.getParameter("txt-email"));
 		contato.setEndereco(request.getParameter("txt-endereco"));
 		contato.setTelefone(request.getParameter("txt-telefone"));
+		
 		if(request.getParameter("txt-codContato").length() > 0) {
 			contato.setCodContato(Integer.parseInt(request.getParameter("txt-codContato")));
 		}
