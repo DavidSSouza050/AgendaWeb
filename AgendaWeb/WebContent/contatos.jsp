@@ -79,11 +79,11 @@
 												<% for(Contato c : contatos){ %>
 												
 												<tr>
-													<td><%= c.getCodContato() %></td>
+													<td><b><%= String.format("%04d",c.getCodContato()) %></b></td>
 													<td><a href="ExibirContatoServlet?cod_contato=<%= c.getCodContato()%>"><%= c.getNome() %></a></td>
 													<td><%= c.getEmail() %></td>
 													<td>
-														<a href="ExcluirContatoServlet?cod_contato=<%= c.getCodContato()%>">
+														<a href="ExcluirContatoServlet?cod_contato=<%= c.getCodContato()%>&nome=<%= c.getNome()%>">
 															<img src="./imagens/deleteX32.png">
 														</a>
 													</td>

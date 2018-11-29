@@ -65,12 +65,27 @@
 									</div>
 									
 									<div class="card-body">
+										<label>
+											Status
+										</label>
+										<select class="form-control" name="txt-status" id="txt-status">			
+											<option value="0">
+												Em Andamento
+											</option>
+											<option value="1">
+												Cancelado
+											</option>
+											<option value="2">
+												Concluido
+											</option>										
+										</select><br>
 										<table class="table table-hover">
 											<thead class="thead-dark">
 												<tr>
 													<th scope="col">Cod.</th>
 													<th scope="col">Titulo</th>
 													<th scope="col">Data</th>
+													<th scope="col">Prioridade<th>
 													<th></th>
 												</tr>
 											</thead>
@@ -80,12 +95,21 @@
 												<% for(Compromisso c : compromissos){ %>
 												
 												<tr>
-													<td><%= c.getCodCompromisso() %></td>
+													<td><b><%= String.format("%04d", c.getCodCompromisso())%></b></td>
 													<td><a href="ExibirCompromissoServlet?cod_compromisso=<%= c.getCodCompromisso()%>"><%= c.getTitulo() %></a></td>
 													<td><%= c.getData() %></td>
 													<td>
-														<a href="ExcluirComrpomissoServlet?cod_compromisso="<%=  c.getCodCompromisso()%>>
-															Excluir
+														<%if(c.getPrioridade() == 0){ %>
+															Em andamento															
+														<%}else if(c.getPrioridade() == 1){ %>
+															Cancelado
+														<%}else if(c.getPrioridade() == 2){ %>
+															Concluido
+														<%}%>
+													<td>
+													<td>
+														<a href="ExcluirComrpomissoServlet?cod_compromisso=<%=c.getCodCompromisso()%>">
+															<img src="./imagens/cancela24.png">
 														</a>
 													</td>
 												</tr> 

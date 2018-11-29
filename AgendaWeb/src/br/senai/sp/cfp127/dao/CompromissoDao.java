@@ -52,6 +52,7 @@ public class CompromissoDao {
 	}
 	
 	
+	//GRAVAR COMPROMISSO
 	public boolean gravar(Compromisso compromisso) {
 		System.out.println(">>>>>>>>>>>>>>>" + compromisso.getUsuario().getCod());
 		String sql = "INSERT INTO tbl_compromisso ("
@@ -75,6 +76,70 @@ public class CompromissoDao {
 		}
 		
 	}
+	
+	
+	//selecionar o comprmisso
+	public Compromisso  exibir(int codCompromisso){
+		
+		String sql = "SELECT * FROM tbl_compromisso "
+				+ "WHERE cod_compromisso = ?";
+		try {
+			stm = Conexao.getConexao().prepareStatement(sql);
+			stm.setInt(1, codCompromisso);
+			rs = stm.executeQuery();
+			
+			if(rs.next()) {
+				this.compromisso = new Compromisso();
+				this.compromisso.setCodCompromisso(rs.getInt("cod_compromisso"));
+				this.compromisso.setTitulo(rs.getString("titulo"));
+				this.compromisso.setData(rs.getString("data"));
+				this.compromisso.setHoraInicio(rs.getString("horaInicio"));
+				this.compromisso.setHoraFim(rs.getString("horaFim"));
+				this.compromisso.setDescricao(rs.getString("descricao"));
+				this.compromisso.setPrioridade(rs.getInt("prioridade"));
+				this.compromisso.setStatus(rs.getInt("status"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return compromisso;
+	}
+	
+	
+	public boolean atualizar(Compromisso compromisso) {
+		String sql = "UPDATE tbl_compromisso SET "
+				+ "titulo = ?, "
+				+ "data = ?, "
+				+ "horaInicio = ?, "
+				+ "horaFim = ?, "
+				+ "descricao = ?, "
+				+ "prioridade = ?, "
+				+ "status = ? "
+				+ "WHERE cod_compromisso = ?";
+		try {
+			stm = Conexao.getConexao().prepareStatement(sql);
+			stm.setString(1, compromisso.getTitulo());
+			stm.setString(2, compromisso.getData());
+			stm.setString(3, compromisso.getHoraInicio());
+			stm.setString(4, compromisso.getHoraFim());
+			stm.setString(5, compromisso.getDescricao());
+			stm.setInt(6, compromisso.getPrioridade());
+			stm.setInt(7, compromisso.getStatus());
+			stm.setInt(8, compromisso.getCodCompromisso());
+			stm.execute();	
+			return true;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+	
+	
+	
+	
 	
 	
 }

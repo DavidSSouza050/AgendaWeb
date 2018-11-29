@@ -57,7 +57,7 @@
 											<div class="card-header">
 													<h5> Cadastrar um novo compromisso</h5>
 											</div>
-											<form id="compromisso" action="CadastrarCompromissoServlet" method="post">
+											<form id="compromisso" action="AtualizarCompromissoServlet" method="post">
 												<div class="card-body">
 													<div class="alert-warning">
 														<ul id="mensagens-erro" class="mt-2 mb-3">
@@ -72,23 +72,23 @@
 													
 													<div class="row form-group">														
 														<div class="col-md-12">
-															<input type="text" name="txt-codCompromisso" id="txt-codCompromisso" hidden="hidden">
+															<input type="text" name="txt-codCompromisso" id="txt-codCompromisso" value="<%= compromisso.getCodCompromisso() %>" hidden="hidden">
 															<label for="txt-titulo">Titulo do compromisso:</label>
-															<input class="form-control" type="text" name="txt-titulo" id="txt-titulo" >
+															<input class="form-control" type="text" name="txt-titulo" id="txt-titulo" value="<%= compromisso.getTitulo() %>" >
 														</div>														
 													</div>
 													<div class="row form-group">
 														<div class="col-md-4">
 															<label for="txt-Data">Data:</label>
-															<input class="form-control" type="date" name="txt-data" id="txt-data">
+															<input class="form-control" type="date" name="txt-data" id="txt-data" value="<%= compromisso.getData() %>">
 														</div>
 														<div class="col-md-4">
 															<label for="txt-horaInicio">Hr. Inicio:</label>
-															<input class="form-control" type="time" name="txt-horaInicio" id="txt-horaInicio" >														
+															<input class="form-control" type="time" name="txt-horaInicio" id="txt-horaInicio" value="<%= compromisso.getHoraInicio() %>">														
 														</div>
 														<div class="col-md-4">
 															<label for="txt-horaFim">Hr. Fim:</label>
-															<input class="form-control" type="time" name="txt-horaFim" id="txt-horaFim" >														
+															<input class="form-control" type="time" name="txt-horaFim" id="txt-horaFim" value="<%= compromisso.getHoraFim() %>">														
 														</div>
 																												
 													</div>
@@ -98,7 +98,10 @@
 																Status
 															</label>
 															<select class="form-control" name="txt-status" id="txt-status">
-																<option value="0">
+															<%
+																if(compromisso.getPrioridade() == 0){
+															%>
+																<option value="0" selected>
 																	Em Andamento
 																</option>
 																<option value="1">
@@ -107,22 +110,84 @@
 																<option value="2">
 																	Concluido
 																</option>
+															<%
+																}else if (compromisso.getPrioridade() == 1){
+															%>
+																<option value="0" >
+																	Em Andamento
+																</option>
+																<option value="1" selected>
+																	Cancelado
+																</option>
+																<option value="2">
+																	Concluido
+																</option>
+															<%
+																}else if (compromisso.getPrioridade() == 2){
+															%>
+																<option value="0" >
+																	Em Andamento
+																</option>
+																<option value="1" >
+																	Cancelado
+																</option>
+																<option value="2" selected>
+																	Concluido
+																</option>
+																
+															<%
+																}
+															%>	
+																
 															</select>
 														</div>
 														<div class="col-md-6">
 															<label>
 																Prioridades
 															</label>
-															<select class="form-control" name="txt-prioridades" id="txt-prioridades">
-																<option value="0">
-																	Alto
-																</option>
-																<option value="1">
-																	Médio
-																</option>
-																<option value="2">
-																	Baixo
-																</option>
+															<select class="form-control" name="txt-prioridades" id="txt-prioridades" value="<%= compromisso.getPrioridade() %>">
+																<%
+																	if(compromisso.getStatus() == 0){
+																%>
+																	<option value="0" selected>
+																		Alto
+																	</option>
+																	<option value="1">
+																		Médio
+																	</option>
+																	<option value="2">
+																		Baixo
+																	</option>
+																<%
+																	}else if(compromisso.getStatus() == 1){
+																%>													
+																	<option value="0" >
+																		Alto
+																	</option>
+																	<option value="1" selected>
+																		Médio
+																	</option>
+																	<option value="2">
+																		Baixo
+																	</option>
+																<%
+																	}else if(compromisso.getStatus() == 2){
+																%>
+																
+																	<option value="0" >
+																		Alto
+																	</option>
+																	<option value="1">
+																		Médio
+																	</option>
+																	<option value="2"  selected>
+																		Baixo
+																	</option>
+																
+																<%
+																	}
+																%>
+																
 															</select>
 														</div>
 													</div>												
@@ -130,8 +195,7 @@
 
 														<div class="col-md-12">
 															<label for="txt-descricao">Descrição:</label>
-															<textarea class="form-control" name="txt-descricao" id="txt-descricao" >
-															</textarea>														
+															<textarea class="form-control h-75" name="txt-descricao" id="txt-descricao"><%= compromisso.getDescricao() %></textarea>														
 														</div>
 													</div>
 												</div>
