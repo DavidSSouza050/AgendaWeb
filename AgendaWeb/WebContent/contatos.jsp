@@ -1,4 +1,5 @@
 <%@page import="java.util.ArrayList"%>
+<%@page import="br.senai.sp.cfp127.util.FormataData"%>
 <%@page import="br.senai.sp.cfp127.dao.ContatoDao"%>
 <%@page import="br.senai.sp.cfp127.model.Usuario"%>
 <%@page import="br.senai.sp.cfp127.model.Contato"%>

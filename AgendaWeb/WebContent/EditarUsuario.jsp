@@ -1,4 +1,5 @@
 <%@page import="br.senai.sp.cfp127.model.Usuario"%>
+<%@page import="br.senai.sp.cfp127.util.FormataData"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     

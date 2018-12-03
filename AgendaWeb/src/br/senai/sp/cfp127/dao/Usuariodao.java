@@ -34,10 +34,13 @@ public class Usuariodao {
 			stm.setString(4, usuario.getSexo().substring(0, 1));
 			stm.setString(5, usuario.getDtNascimento());
 			stm.execute();	
+			
 			return true;
 		}catch (Exception e) {
 			e.printStackTrace();
 			return false;
+		}finally {
+			Conexao.fecharConexao();
 		}
 		
 	}
@@ -65,6 +68,8 @@ public class Usuariodao {
 		}catch (Exception e) {
 			e.printStackTrace();
 			return false;
+		}finally {
+			Conexao.fecharConexao();
 		}
 		
 	}
@@ -95,6 +100,8 @@ public class Usuariodao {
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			Conexao.fecharConexao();
 		}
 		return this.usuario;
 	}

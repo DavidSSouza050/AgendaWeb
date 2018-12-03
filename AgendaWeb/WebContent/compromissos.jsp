@@ -1,12 +1,18 @@
+<%@page import="br.senai.sp.cfp127.util.FormataData"%>
 <%@page import="br.senai.sp.cfp127.dao.CompromissoDao"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="br.senai.sp.cfp127.dao.ContatoDao"%>
 <%@page import="br.senai.sp.cfp127.model.Usuario"%>
 <%@page import="br.senai.sp.cfp127.model.Compromisso"%>
+<%@page import="br.senai.sp.cfp127.util.FormataData"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
 <%
+	int status = 0;
+	if(request.getParameter("status") != null){
+		status = Integer.parseInt(request.getParameter("status"));
+	}
 
 	Usuario usuario = new Usuario();	
 	//casting = quando convertamos um atributo para o objeto(usuario está sendo covertido para um objeto);
@@ -15,7 +21,7 @@
 	CompromissoDao dao = new CompromissoDao();
 	ArrayList<Compromisso> compromissos = new ArrayList<>();
 	
-	compromissos = dao.getCompromisso(usuario.getCod());
+	compromissos = dao.getCompromisso(usuario.getCod(), status);
 	
 	if(usuario == null){
 		response.sendRedirect("Login.html");
@@ -24,7 +30,7 @@
 			<!DOCTYPE html>
 			<html>
 				<head>
-					<title>Meus contatos</title>
+					<title>Meus compromissos</title>
 					<link rel="stylesheet"	type="text/css" href="./css/bootstrap.css">
 					<meta charset="UTF-8">
 				</head>
@@ -56,7 +62,7 @@
 									<div class="card-header bg-info text-white">
 										<div class="row">
 											<div class="col-md-9">
-												<h5>Meus Contatos</h5>
+												<h5>Meus compromissos</h5>
 											</div>
 											<div class="col-md-3">
 												<a href="NovoCompromisso.jsp" class="badge badge-success">Novo compromisso</a>
@@ -68,14 +74,14 @@
 										<label>
 											Status
 										</label>
-										<select class="form-control" name="txt-status" id="txt-status">			
-											<option value="0">
+										<select class="form-control" name="status" id="status" onchange="selecionarCompromissos()">			
+											<option value="0" <%= status == 0 ? "selected" :"" %>>
 												Em Andamento
 											</option>
-											<option value="1">
+											<option value="1" <%= status == 1 ? "selected" :"" %>>
 												Cancelado
 											</option>
-											<option value="2">
+											<option value="2" <%= status == 2 ? "selected" :"" %>>
 												Concluido
 											</option>										
 										</select><br>
@@ -85,8 +91,10 @@
 													<th scope="col">Cod.</th>
 													<th scope="col">Titulo</th>
 													<th scope="col">Data</th>
-													<th scope="col">Prioridade<th>
+													<th scope="col">Status<th>
 													<th></th>
+													<th></th>
+													
 												</tr>
 											</thead>
 											<tbody>
@@ -97,21 +105,36 @@
 												<tr>
 													<td><b><%= String.format("%04d", c.getCodCompromisso())%></b></td>
 													<td><a href="ExibirCompromissoServlet?cod_compromisso=<%= c.getCodCompromisso()%>"><%= c.getTitulo() %></a></td>
-													<td><%= c.getData() %></td>
+													<td><%= FormataData.dataPt(c.getData()) %></td>
 													<td>
-														<%if(c.getPrioridade() == 0){ %>
+														<%if(c.getStatus() == 0){ %>
 															Em andamento															
-														<%}else if(c.getPrioridade() == 1){ %>
+														<%}else if(c.getStatus() == 1){ %>
 															Cancelado
-														<%}else if(c.getPrioridade() == 2){ %>
+														<%}else if(c.getStatus() == 2){ %>
 															Concluido
 														<%}%>
 													<td>
-													<td>
-														<a href="ExcluirComrpomissoServlet?cod_compromisso=<%=c.getCodCompromisso()%>">
-															<img src="./imagens/cancela24.png">
-														</a>
-													</td>
+													
+													
+													
+												
+													<% if(c.getStatus() == 0){%>
+														<td>
+															<a href="MudarStatusServlet?cod_compromisso=<%=c.getCodCompromisso()%>&status=1">
+																<img src="./imagens/cancela24.png">
+															</a>
+														</td>
+														<td>
+															<a href="MudarStatusServlet?cod_compromisso=<%=c.getCodCompromisso()%>&status=2">
+																<img src="./imagens/concluido.png">
+															</a>
+														</td>
+													<%}else{ %>	
+														<td>
+															<a href="compromissos.jsp">Voltar</a>
+														</td>
+													<%} %>
 												</tr> 
 													
 												<% } %>
@@ -127,6 +150,24 @@
 							</div>
 						</div>	
 					</div>
+					
+					<script>
+						function selecionarCompromissos(){
+							var op = document.querySelector("#status");
+							
+							if (op.value == 0){
+								window.location.href="compromissos.jsp?status=0";
+							}
+							if (op.value == 1){
+								window.location.href="compromissos.jsp?status=1";
+							}
+							if (op.value == 2){
+								window.location.href="compromissos.jsp?status=2";
+							}
+						}
+					
+					</script>
+					
 				</body>
 			</html>		
 		<%

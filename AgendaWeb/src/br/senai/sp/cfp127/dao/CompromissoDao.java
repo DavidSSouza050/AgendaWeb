@@ -21,14 +21,15 @@ public class CompromissoDao {
 		this.compromisso = compromisso;
 	}
 
-	public ArrayList<Compromisso> getCompromisso(int codUsuario){
+	public ArrayList<Compromisso> getCompromisso(int codUsuario, int status){
 		ArrayList<Compromisso> compromisso = new ArrayList<>();
 		
 		String sql = "SELECT * FROM tbl_compromisso "
-				+ "WHERE cod_usuario = ? ORDER BY prioridade";
+				+ "WHERE cod_usuario = ? AND status = ?";
 		try {
 			stm = Conexao.getConexao().prepareStatement(sql);
 			stm.setInt(1, codUsuario);
+			stm.setInt(2, status);
 			rs = stm.executeQuery();
 			
 			while(rs.next()) {
@@ -46,6 +47,8 @@ public class CompromissoDao {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			Conexao.fecharConexao();
 		}
 		
 		return compromisso;
@@ -73,6 +76,8 @@ public class CompromissoDao {
 		}catch (Exception e) {
 			e.printStackTrace();
 			return false;
+		}finally {
+			Conexao.fecharConexao();
 		}
 		
 	}
@@ -102,6 +107,8 @@ public class CompromissoDao {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			Conexao.fecharConexao();
 		}
 		
 		return compromisso;
@@ -133,11 +140,34 @@ public class CompromissoDao {
 		}catch (Exception e) {
 			e.printStackTrace();
 			return false;
+		}finally {
+			Conexao.fecharConexao();
 		}
 		
 	}
 	
 	
+	
+	
+	
+	//Atualizar os status do compromisso
+	
+	public boolean atualizarStatus(int status, int codCompromisso) {
+		String sql = "UPDATE tbl_compromisso SET status = ? WHERE cod_compromisso = ?";
+		try {
+			stm = Conexao.getConexao().prepareStatement(sql);
+			stm.setInt(1, status);
+			stm.setInt(2, codCompromisso);
+			stm.execute();	
+			return true;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}finally {
+			Conexao.fecharConexao();
+		}
+		
+	}
 	
 	
 	
