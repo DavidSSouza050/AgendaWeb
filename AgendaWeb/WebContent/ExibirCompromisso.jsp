@@ -99,7 +99,7 @@
 															</label>
 															<select class="form-control" name="txt-status" id="txt-status">
 															<%
-																if(compromisso.getPrioridade() == 0){
+																if(compromisso.getStatus() == 0){
 															%>
 																<option value="0" selected>
 																	Em Andamento
@@ -111,7 +111,7 @@
 																	Concluido
 																</option>
 															<%
-																}else if (compromisso.getPrioridade() == 1){
+																}else if (compromisso.getStatus() == 1){
 															%>
 																<option value="0" >
 																	Em Andamento
@@ -123,7 +123,7 @@
 																	Concluido
 																</option>
 															<%
-																}else if (compromisso.getPrioridade() == 2){
+																}else if (compromisso.getStatus() == 2){
 															%>
 																<option value="0" >
 																	Em Andamento
