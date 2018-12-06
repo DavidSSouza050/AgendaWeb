@@ -100,7 +100,7 @@
 													<td><%= c.getData() %></td>
 													<td>
 														<%if(c.getPrioridade() == 0){ %>
-															Em andamento															
+															Em Andamento															
 														<%}else if(c.getPrioridade() == 1){ %>
 															Cancelado
 														<%}else if(c.getPrioridade() == 2){ %>
