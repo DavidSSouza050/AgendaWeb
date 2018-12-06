@@ -1,4 +1,5 @@
 <%@page import="br.senai.sp.cfp127.model.Usuario"%>
+<%@page import="br.senai.sp.cfp127.model.Compromisso"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
@@ -49,9 +50,31 @@
 									</div>
 									
 									<div class="card-body">
-										
-									</div>
 									
+										<div class="card-deck">
+											<div class="card-body">
+										 <div class="card-deck">
+										  <div class="card border-danger mb-3 " style="max-width: 20rem;">
+										   <div class="card-header">Data</div>
+										  	 <div class="card-body text-danger">
+										       <h5 class="card-title">Titulo</h5>
+										   		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+										 	 </div>
+										  </div>
+											  
+										  <div class="card border-primary mb-3 " style="max-width: 20rem;">
+										   <div class="card-header">Data</div>
+											<div class="card-body text-primary">
+											 <h5 class="card-title">Titulo</h5>
+											  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+											</div>
+										  </div>
+										 </div>
+										</div>
+										
+										
+										</div>
+									</div>
 									<div class="card-footer">
 											
 									</div>
