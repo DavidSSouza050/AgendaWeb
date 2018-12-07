@@ -1,5 +1,10 @@
+<%@page import="br.senai.sp.cfp127.util.FormataData"%>
+<%@page import="br.senai.sp.cfp127.dao.CompromissoDao"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="br.senai.sp.cfp127.dao.ContatoDao"%>
 <%@page import="br.senai.sp.cfp127.model.Usuario"%>
 <%@page import="br.senai.sp.cfp127.model.Compromisso"%>
+<%@page import="br.senai.sp.cfp127.util.FormataData"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
@@ -8,6 +13,11 @@
 	Usuario usuario = new Usuario();	
 	//casting = quando convertamos um atributo para o objeto(usuario está sendo covertido para um objeto);
 	usuario = (Usuario) session.getAttribute("usuario");
+	
+	CompromissoDao dao = new CompromissoDao();
+	ArrayList<Compromisso> compromissos = new ArrayList<>();
+	
+	compromissos = dao.CompromissoProximo(usuario.getCod());
 	
 	if(usuario == null){
 		response.sendRedirect("Login.html");
@@ -51,26 +61,22 @@
 									
 									<div class="card-body">
 									
+									
+									<% for (Compromisso c : compromissos) { %>
+									
 										<div class="card-deck">
 											<div class="card-body">
 										 <div class="card-deck">
 										  <div class="card border-danger mb-3 " style="max-width: 20rem;">
-										   <div class="card-header">Data</div>
+										   <div class="card-header"><%= FormataData.dataPt(c.getData())%></div>
 										  	 <div class="card-body text-danger">
-										       <h5 class="card-title">Titulo</h5>
-										   		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+										       <h5 class="card-title"><a href="ExibirCompromissoServlet?cod_compromisso=<%= c.getCodCompromisso()%>"><%= c.getTitulo() %></a></h5>
+										   		<p class="card-text"><%= c.getDescricao() %></p>
 										 	 </div>
 										  </div>
-											  
-										  <div class="card border-primary mb-3 " style="max-width: 20rem;">
-										   <div class="card-header">Data</div>
-											<div class="card-body text-primary">
-											 <h5 class="card-title">Titulo</h5>
-											  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-											</div>
-										  </div>
-										 </div>
-										</div>
+										
+										<% } %>	  
+										  
 										
 										
 										</div>

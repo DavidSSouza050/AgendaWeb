@@ -54,6 +54,39 @@ public class CompromissoDao {
 		return compromisso;
 	}
 	
+	//pegar Ordem
+	public ArrayList<Compromisso> CompromissoProximo(int codUsuario){
+		ArrayList<Compromisso> compromisso = new ArrayList<>();
+		
+		String sql = "SELECT * FROM tbl_compromisso "
+				+ "WHERE cod_usuario = ? ORDER BY data LIMIT 3";
+		try {
+			stm = Conexao.getConexao().prepareStatement(sql);
+			stm.setInt(1, codUsuario);
+			rs = stm.executeQuery();
+			
+			while(rs.next()) {
+				this.compromisso = new Compromisso();
+				this.compromisso.setCodCompromisso(rs.getInt("cod_compromisso"));
+				this.compromisso.setTitulo(rs.getString("titulo"));
+				this.compromisso.setData(rs.getString("data"));
+				this.compromisso.setHoraInicio(rs.getString("horaInicio"));
+				this.compromisso.setHoraFim(rs.getString("horaFim"));
+				this.compromisso.setDescricao(rs.getString("descricao"));
+				this.compromisso.setPrioridade(rs.getInt("prioridade"));
+				this.compromisso.setStatus(rs.getInt("status"));
+				compromisso.add(this.compromisso);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			Conexao.fecharConexao();
+		}
+		
+		return compromisso;
+	}
+	
 	
 	//GRAVAR COMPROMISSO
 	public boolean gravar(Compromisso compromisso) {

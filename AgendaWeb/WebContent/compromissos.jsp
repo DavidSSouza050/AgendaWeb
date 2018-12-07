@@ -111,12 +111,11 @@
 														<%if(c.getStatus() == 0){ %>
 															Em andamento															
 														<%}else if(c.getStatus() == 1){ %>
-
 															Cancelado
 														<%}else if(c.getStatus() == 2){ %>
 															Concluido
 														<%}%>
-													<td>
+													</td>
 																				
 													<% if(c.getStatus() == 0){%>
 														<td>
