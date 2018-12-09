@@ -19,6 +19,8 @@
 	
 	compromissos = dao.CompromissoProximo(usuario.getCod());
 	
+	
+	
 	if(usuario == null){
 		response.sendRedirect("Login.html");
 	}else{
@@ -46,37 +48,36 @@
 					</div>
 					<div class="container mt-5 fluid">
 						<div class="row">
-							<div  class="col-md-4">
+							<div  class="col-md-3">
 								
 								<%@ include file = "PainelUsuario.jsp" %>
 								
 								<%@ include file = "menu.html" %>
 								
 							</div>
-							<div  class="col-md-8">
+							<div  class="col-md-9">
 								<div class="card">
 									<div class="card-header bg-info text-white">
 										<h5>Bem-vindo</h5>
 									</div>
 									
 									<div class="card-body">
-									
-									
-									<% for (Compromisso c : compromissos) { %>
-									
-										<div class="card-deck">
-											<div class="card-body">
-										 <div class="card-deck">
-										  <div class="card border-danger mb-3 " style="max-width: 20rem;">
-										   <div class="card-header"><%= FormataData.dataPt(c.getData())%></div>
-										  	 <div class="card-body text-danger">
-										       <h5 class="card-title"><a href="ExibirCompromissoServlet?cod_compromisso=<%= c.getCodCompromisso()%>"><%= c.getTitulo() %></a></h5>
-										   		<p class="card-text"><%= c.getDescricao() %></p>
-										 	 </div>
-										  </div>
 										
-										<% } %>	  
-										  
+											<% for (Compromisso c : compromissos){ %>
+												<%if(c.getStatus() == 0){%>
+														<div class="card-deck">
+															<div class="card-body">
+														 <div class="card-deck">
+														  <div class="card border-danger mb-3 " style="max-width: 15rem;">
+														   <div class="card-header"><%= FormataData.dataPt(c.getData())%></div>
+														  	 <div class="card-body text-danger">
+														       <h5 class="card-title"><a href="ExibirCompromissoServlet?cod_compromisso=<%= c.getCodCompromisso()%>"><%= c.getTitulo() %></a></h5>
+														   		<p class="card-text"><%= c.getDescricao() %></p>
+														 	 </div>
+														  </div>
+													<%}%>
+
+												<% } %>	 
 										
 										
 										</div>

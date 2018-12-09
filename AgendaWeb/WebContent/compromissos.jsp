@@ -120,12 +120,12 @@
 													<% if(c.getStatus() == 0){%>
 														<td>
 															<a href="MudarStatusServlet?cod_compromisso=<%=c.getCodCompromisso()%>&status=1">
-																<img src="./imagens/cancela24.png">
+																<img src="./imagens/cancela24.png" alt="Cancelar" title="Cancelar">
 															</a>
 														</td>
 														<td>
 															<a href="MudarStatusServlet?cod_compromisso=<%=c.getCodCompromisso()%>&status=2">
-																<img src="./imagens/concluido.png">
+																<img src="./imagens/concluido.png" alt="Concluido" title="Concluido">
 															</a>
 														</td>
 													<%}else{ %>	

@@ -59,7 +59,7 @@ public class CompromissoDao {
 		ArrayList<Compromisso> compromisso = new ArrayList<>();
 		
 		String sql = "SELECT * FROM tbl_compromisso "
-				+ "WHERE cod_usuario = ? ORDER BY data LIMIT 3";
+				+ "WHERE cod_usuario = ? ORDER BY data AND horaInicio LIMIT 3";
 		try {
 			stm = Conexao.getConexao().prepareStatement(sql);
 			stm.setInt(1, codUsuario);

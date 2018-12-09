@@ -131,8 +131,7 @@
 
 														<div class="col-md-12">
 															<label for="txt-descricao">Descrição:</label>
-															<textarea class="form-control" name="txt-descricao" id="txt-descricao" >
-															</textarea>														
+															<textarea class="form-control" name="txt-descricao" id="txt-descricao"></textarea>														
 														</div>
 													</div>
 												</div>

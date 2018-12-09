@@ -95,7 +95,7 @@
 													</div>
 												</div>
 												<div class="card-footer">
-													<button class="btn btn-success" id="bt-Criar">Editar</button>
+													<button class="btn btn-success" id="bt-Criar">Criar Contato</button>
 													<a href="contatos.jsp" class="btn btn-info">Cancelar</a>
 												</div>
 											
