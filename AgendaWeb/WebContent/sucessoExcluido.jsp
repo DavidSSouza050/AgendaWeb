@@ -12,7 +12,7 @@
 	
 	Contato contato = new Contato();	
 	contato = (Contato) session.getAttribute("contato");
-	
+
 %>
 			<!DOCTYPE html>
 			<html>
@@ -47,8 +47,8 @@
 							</div>
 							<div  class="col-md-8">
 								<div class="card">
-									<div class="card-header bg-info text-white">
-										<h5><img src="./imagens/editar64.png">Novo usuario</h5>
+									<div class="card-header bg-danger text-white">
+										<h2><img src="./imagens/excluirContato64.png">Excluir</h2>
 									</div>
 									
 									<div class="card-body">
@@ -56,51 +56,30 @@
 									
 										<div class="card" >
 											<div class="card-header">
-													<h5> Cadastrar um novo usuario</h5>
+													<h5>Excluir contato</h5>
 											</div>
-											<form id="contato" action="CadastrarContatoServlet" method="post">
+											
 												<div class="card-body">
-													<div class="alert-warning">
-														<ul id="mensagens-erro" class="mt-2 mb-3">
-															
-														</ul>	
-													</div>
-													<div class="row">
-														<div class="col-md-12 text-primary">
-															<h6 class="text-primary mb-4">Dados do contato</h6>
-														</div>
-													</div>
 													
 													<div class="row form-group">
+														<div class="card-body">
+															<p><h4 class="text-danger">Você está certo disso ?!</h4></p><br>
+															<p>Você realmete deseja excluir: <%= contato.getNome()%></p>
+															<p><h6>Aproveite!</h6>
+														</div>
+														<div class="card-footer">
+														</div>
 														
-														<div class="col-md-4">
-														<input type="text" name="txt-codContato" id="txt-codContato" hidden="hidden">
-															<label for="txt-nome">Nome:</label>
-															<input class="form-control" type="text" name="txt-nome" id="txt-nome" >
-														</div>
-														<div class="col-md-4">
-															<label for="txt-Telefone">Telefone:</label>
-															<input class="form-control" type="text" name="txt-telefone" id="txt-telefone">
-														</div>
-														<div class="col-md-4">
-															<label for="txt-email">E-mail:</label>
-															<input class="form-control" type="text" name="txt-email" id="txt-email" >														
-														</div>
-													</div>												
-													<div class="row form-group">
-
-														<div class="col-md-12">
-															<label for="txt-endereco">Endereço:</label>
-															<input class="form-control" type="text" name="txt-endereco" id="txt-endereco" >														
-														</div>
 													</div>
 												</div>
-												<div class="card-footer">
-													<button class="btn btn-success" id="bt-Criar">Criar Contato</button>
+												<div class="card-footer">										
+													<a href="ExcluirContatoServlet?cod_contato=<%=contato.getCodContato()%>">
+														<button class="btn btn-success" id="bt-Criar">Excluir</button>
+													</a>
 													<a href="contatos.jsp" class="btn btn-info">Cancelar</a>
 												</div>
 											
-											</form>
+											
 										
 										</div>
 

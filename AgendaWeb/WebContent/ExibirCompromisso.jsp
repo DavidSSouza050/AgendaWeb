@@ -19,6 +19,7 @@
 				<head>
 					<title>Novo contato</title>
 					<link rel="stylesheet"	type="text/css" href="./css/bootstrap.css">
+					<link rel="shortcut icon" href="./imagens/iconeLogo.png" type="image/x-icon" />
 					<meta charset="UTF-8">
 				</head>
 				<body class="bg-dark">

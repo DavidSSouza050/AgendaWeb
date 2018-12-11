@@ -26,6 +26,7 @@
 				<head>
 					<title>Meus contatos</title>
 					<link rel="stylesheet"	type="text/css" href="./css/bootstrap.css">
+					<link rel="shortcut icon" href="./imagens/iconeLogo.png" type="image/x-icon" />
 					<meta charset="UTF-8">
 				</head>
 				<body class="bg-dark">
@@ -84,7 +85,7 @@
 													<td><a href="ExibirContatoServlet?cod_contato=<%= c.getCodContato()%>"><%= c.getNome() %></a></td>
 													<td><%= c.getEmail() %></td>
 													<td>
-														<a href="ExcluirContatoServlet?cod_contato=<%= c.getCodContato()%>&nome=<%= c.getNome()%>">
+														<a href="PegarContato?cod_contato=<%=c.getCodContato()%>">
 															<img src="./imagens/deleteX32.png">
 														</a>
 													</td>

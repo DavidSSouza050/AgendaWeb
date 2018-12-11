@@ -10,30 +10,25 @@ import javax.servlet.http.HttpServletResponse;
 import br.senai.sp.cfp127.dao.ContatoDao;
 import br.senai.sp.cfp127.model.Contato;
 
-@WebServlet("/ExcluirContatoServlet")
-public class ExcluirContatoServlet extends HttpServlet {
+
+@WebServlet("/PegarContato")
+public class PegarContato extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ExcluirContatoServlet() {
+ 
+    public PegarContato() {
         super();
-      
+        
     }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		int codContato = (Integer.parseInt(request.getParameter("cod_contato")));
 		System.out.println(codContato);
+		Contato contato = new Contato();
 		ContatoDao dao = new ContatoDao();
-		
-		if(dao.excluir(codContato)) {
-			response.sendRedirect("contatos.jsp");
-		}else {
-			response.sendRedirect("#");
-		}
-		
-		
-		
+		contato = dao.getContato(codContato);
+		request.getSession().setAttribute("contato", contato);
+		response.sendRedirect("sucessoExcluido.jsp");
 	}
 
 }
