@@ -8,7 +8,7 @@
 <%
 
 	Usuario usuario = new Usuario();	
-	//casting = quando convertamos um atributo para o objeto(usuario está sendo covertido para um objeto);
+	//casting = quando convertamos um atributo para o objeto(usuario estï¿½ sendo covertido para um objeto);
 	usuario = (Usuario) session.getAttribute("usuario");
 	
 	Compromisso compromisso = new Compromisso();	
@@ -16,12 +16,12 @@
 	
 %>
 			<!DOCTYPE html>
-			<html>
+			<html lang="pt-br">
 				<head>
 					<title>Novo contato</title>
 					<link rel="stylesheet"	type="text/css" href="./css/bootstrap.css">
 					<link rel="shortcut icon" href="./imagens/iconeLogo.png" type="image/x-icon" />
-					<meta charset="UTF-8">
+					<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
 				</head>
 				<body class="bg-dark">
 					<div class="bg-info text-white">
@@ -31,7 +31,7 @@
 									<img src="./imagens/agenda64.png">
 								</div>
 								<div class="col-md-11">
-									<h1>Agenda Eletrôrnica</h1>
+									<h1>Agenda Eletrï¿½rnica</h1>
 									<h6>Contatos e Compromissos</h6>
 								</div>
 							</div>
@@ -62,7 +62,7 @@
 											<form id="compromisso" action="CadastrarCompromissoServlet" method="post">
 												<div class="card-body">
 													<div class="alert-warning">
-														<ul id="mensagens-erro" class="mt-2 mb-3">
+														<ul id="mensagens-errosCompromisso" class="mt-2 mb-3">
 															
 														</ul>	
 													</div>
@@ -97,7 +97,7 @@
 													<div class="row form-group">
 														<div class="col-md-6">
 															<label>
-																Status
+																Status:
 															</label>
 															<select class="form-control" name="txt-status" id="txt-status">
 																<option value="0">
@@ -113,7 +113,7 @@
 														</div>
 														<div class="col-md-6">
 															<label>
-																Prioridades
+																Prioridades:
 															</label>
 															<select class="form-control" name="txt-prioridades" id="txt-prioridades">
 																<option value="0">
@@ -137,7 +137,7 @@
 													</div>
 												</div>
 												<div class="card-footer">
-													<button class="btn btn-success" id="bt-Criar">Gravar Compromisso</button>
+													<button class="btn btn-success" id="bt-CriarCompromisso">Gravar Compromisso</button>
 													<a href="compromissos.jsp" class="btn btn-info">Cancelar</a>
 												</div>
 											
@@ -151,6 +151,8 @@
 							</div>
 						</div>	
 					</div>
+					<script type="text/javascript" src="./js/errosCompromisso.js"></script>
+					<script type="text/javascript" src="./js/validaCompromisso.js"></script>
 				</body>
 			</html>		
 

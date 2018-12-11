@@ -65,7 +65,6 @@
 														<div class="card-body">
 															<p><h4 class="text-danger">Você está certo disso ?!</h4></p><br>
 															<p>Você realmete deseja excluir: <%= contato.getNome()%></p>
-															<p><h6>Aproveite!</h6>
 														</div>
 														<div class="card-footer">
 														</div>

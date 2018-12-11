@@ -110,6 +110,8 @@
 							</div>
 						</div>	
 					</div>
+					<script type="text/javascript" src="./js/errosContato.js"></script>
+					<script type="text/javascript" src="./js/validaContatos.js"></script>
 				</body>
 			</html>		
 

@@ -215,6 +215,8 @@
 							</div>
 						</div>	
 					</div>
+					<script type="text/javascript" src="./js/errosCompromisso.js"></script>
+					<script type="text/javascript" src="./js/validaCompromisso.js"></script>
 				</body>
 			</html>		
 
