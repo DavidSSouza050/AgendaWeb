@@ -12,9 +12,9 @@ public class Conexao {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL ="jdbc:mysql://localhost:3306/db_inf2ta?useTimezone=true&serverTimezone=UTC";
-			String user = "root";
-			String pass = "123456";
+			String dbURL ="jdbc:mysql://10.107.134.23:3306/db_inf2ta?useTimezone=true&serverTimezone=UTC";
+			String user = "inf2ta";
+			String pass = "123";
 			con = DriverManager.getConnection(dbURL, user, pass);
 			System.out.println("Banco conectado");
 		}catch(Exception e){

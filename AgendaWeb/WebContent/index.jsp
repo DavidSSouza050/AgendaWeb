@@ -18,9 +18,7 @@
 	ArrayList<Compromisso> compromissos = new ArrayList<>();
 	
 	compromissos = dao.CompromissoProximo(usuario.getCod());
-	
-	
-	
+		
 	if(usuario == null){
 		response.sendRedirect("Login.html");
 	}else{
@@ -66,16 +64,16 @@
 										
 											<% for (Compromisso c : compromissos){ %>
 												<%if(c.getStatus() == 0){%>
-														<div class="card-deck">
-															<div class="card-body">
+																										
 														 <div class="card-deck">
-														  <div class="card border-danger mb-3 " style="max-width: 15rem;">
-														   <div class="card-header"><%= FormataData.dataPt(c.getData())%></div>
-														  	 <div class="card-body text-danger">
-														       <h5 class="card-title"><a href="ExibirCompromissoServlet?cod_compromisso=<%= c.getCodCompromisso()%>"><%= c.getTitulo() %></a></h5>
-														   		<p class="card-text"><%= c.getDescricao() %></p>
-														 	 </div>
-														  </div>
+															  <div class="card border-danger mb-3" style="max-width: 15rem;">
+	 															 <div class="card-header"><%= FormataData.dataPt(c.getData())%></div>
+	  																<div class="card-body text-darck">
+	    																<h5 class="card-title"><a href="ExibirCompromissoServlet?cod_compromisso=<%= c.getCodCompromisso()%>"><%= c.getTitulo() %></a></h5>
+	   																	<p class="card-text"><%= c.getDescricao() %></p>
+																	</div>
+															</div>
+													
 													<%}%>
 
 												<% } %>	 
